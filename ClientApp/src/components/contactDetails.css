@@ -1,0 +1,41 @@
+@media (max-width: 575.98px) {
+  .map-responsive iframe {
+    width: 100%;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .map-responsive iframe {
+    width: 50%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .map-responsive iframe {
+    width: 50%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .map-responsive iframe {
+    width: 50%;
+  }
+}
+@media (min-width: 1200px) {
+  .map-responsive iframe {
+    width: 50%;
+  }
+}
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.map-responsive iframe {
+  left: 0;
+  top: 0;
+  position: absolute;
+  border: 0;
+  height: calc(100vh - 150px);
+}
+
+/*# sourceMappingURL=contactDetails.css.map */

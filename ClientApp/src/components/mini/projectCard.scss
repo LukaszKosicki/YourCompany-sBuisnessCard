@@ -1,0 +1,37 @@
+﻿
+@media (max-width: 575.98px) {
+    .projectCard {
+        display: inline-block;
+        width: 70%;
+        margin: 15px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .projectCard {
+        width: 40%;
+        margin: 15px;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .projectCard {
+        width: 25%;
+        margin: 15px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .projectCard {
+        width: 20%;
+        margin: 20px;
+    } 
+}
+
+@media (min-width: 1200px) {
+   .projectCard {
+       width: 20%;
+       margin: 20px;
+   }
+}

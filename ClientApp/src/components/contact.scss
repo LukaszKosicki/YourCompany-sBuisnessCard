@@ -1,0 +1,85 @@
+﻿
+@media (max-width: 575.98px) {
+    .leftDiv {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contentLeftDiv {
+        display: inline-block;
+        text-align: left;
+    }
+
+    .rightDiv {
+        margin-top: 30px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .leftDiv {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contentLeftDiv {
+        display: inline-block;
+        text-align: left;
+    }
+
+    .rightDiv {
+        margin-top: 30px;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .leftDiv {
+        width: 100%;
+        text-align: center;
+    }
+    .contentLeftDiv {
+        display: inline-block;
+        text-align: left;
+    }
+    .rightDiv {
+        margin-top: 30px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .rightDiv {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        float: right;
+    }
+
+    .leftDiv {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+    }
+
+    .contentLeftDiv {
+        display: inline-block;
+        text-align: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    .rightDiv {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        float: right;
+    }
+    .leftDiv {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+    }
+    .contentLeftDiv {
+        display: inline-block;
+        text-align: left;
+    }
+}
