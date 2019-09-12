@@ -7,14 +7,15 @@ import "../components/contact.css";
 import ContactForm from "../components/mini/ContactForm";
 import Map from "../components/mini/Map";
 import Tootsy from "../components/mini/Tootsy";
+import { connect } from "react-redux";
 
-export default class Contact extends React.Component {
+class Contact extends React.Component {
     render() {
         return (
             <div>
                 <div id="kontakt" className="section">
                     <div className="contentsDiv">   
-                        <h2 className="sectionTitle">Kontakt</h2>
+                        <h2 className="sectionTitle">{this.props.Title}</h2>
                     <div className="leftDiv">
                         <div className="contentLeftDiv"> 
                             <div>
@@ -35,7 +36,9 @@ export default class Contact extends React.Component {
                         </div>
                     </div>
                     <div className="rightDiv">
-                        <ContactForm />
+                            <ContactForm
+                                {...this.props.ContactForm}
+                            />
                     </div>
                 </div>
                 </div>
@@ -45,3 +48,9 @@ export default class Contact extends React.Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    ...state.languages[0].Contact
+});
+
+export default connect(mapStateToProps)(Contact);

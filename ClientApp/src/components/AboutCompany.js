@@ -6,8 +6,9 @@ import partner from "../images/partner.png";
 import project from "../images/project.png";
 import client from "../images/client.png";
 import Counter from "../components/mini/Counter";
+import { connect } from "react-redux";
 
-export default class AboutCompany extends React.Component {
+class AboutCompany extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +29,7 @@ export default class AboutCompany extends React.Component {
         return (
             <div id="o-firmie" className="section">
                 <div className="contentsDiv">
-                    <h2 className="sectionTitle">O firmie</h2>
+                    <h2 className="sectionTitle">{this.props.Title}</h2>
                     <div style={description}>
                         <div style={descriptionDiv}>
                             {CompanyDescription}
@@ -37,24 +38,24 @@ export default class AboutCompany extends React.Component {
                     <div>
                         <Counter
                             img={project}
-                            text="1234 wykonanych projektów"
+                            text={"1234 " + this.props.Projects}
                             href="#nasze-projekty"
                         />
                         <Counter
                             img={exp}
-                            text="6 lat doświadczenia"
+                            text={"6 " + this.props.Experience}
                         />
                         <Counter
                             img={client}
-                            text="100% zadowolonych klientów"
+                            text={"100% " + this.props.Customers}
                         />
                         <Counter
                             img={team}
-                            text="5 profesjonalistów"
+                            text={"5 " + this.props.Team}
                         />
                         <Counter
                             img={partner}
-                            text="7 partnerów biznesowych"
+                            text={"7 " + this.props.Partners}
                             href="#nasi-partnerzy"
                         />
                     </div>
@@ -63,3 +64,9 @@ export default class AboutCompany extends React.Component {
             );
     }
 }
+
+const mapStateToProps = state => ({
+    ...state.languages[0].AboutCompany
+});
+
+export default connect(mapStateToProps)(AboutCompany);

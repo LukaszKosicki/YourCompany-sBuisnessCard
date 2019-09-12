@@ -15,7 +15,7 @@ export default class PleaseScroll extends React.Component {
         return (
             <a style={styles} href="#o-firmie">
                 <div className="icon-scroll"></div>
-                <FormText color="white">Zobacz więcej</FormText>
+                <FormText color="white">{this.props.text}</FormText>
             </a>
             );
     }

@@ -64,7 +64,7 @@ export default class ContactForm extends React.Component {
             } else {
                 valid = false;
                 invalid = true;
-                statemant = "Wprowadź prawidłowy adres e-mail!";
+                statemant = this.props.EmailInvalidText;
             }
         } else {
             if (event.target.value.length > 0) {
@@ -88,6 +88,7 @@ export default class ContactForm extends React.Component {
     }
 
     sendForm = () => {
+        var fields = ["fullName", "email", "phone", "subject", "content"];
         if (this.state.fullName.valid === true && this.state.email.valid === true &&
             this.state.subject.valid === true && this.state.phone.valid === true && this.state.content.valid === true) {
             var form = {
@@ -104,17 +105,36 @@ export default class ContactForm extends React.Component {
                 headers: {
                     "Content-Type": "application/json"
                 }
-            }).then(res => res.json())
-                .then(res => console.log(res));
-        } else {
-            var statemant = "Uzupełnij poprawnie to pole!";
-            var fields = ["fullName", "email", "phone", "subject", "content"];
+            }).then((res) => {
+                return res.json();
+            })
+                .then((text) => {
+                    if (text === true) {
+                        fields.forEach((value) => {
+                            this.setState({
+                                [value]: {
+                                    value: "",
+                                    invalid: false,
+                                    valid: false,
+                                    statemant: ""
+                                }
+                            });
+                        })
+                        alert(this.props.Success);
+                    } else {
+                        alert(this.props.Failed);
+                    }
+                })
+                .catch((err) => {
+                    alert(this.props.Failed);
+                });
+        } else {      
             fields.forEach((value) => {
                 if (this.state[value].valid === false) {
                     this.setState({
                         [value]: {
                             invalid: true,
-                            statemant: statemant
+                            statemant: this.props.CommonInvalidText
                         }
                     });
                 }
@@ -133,47 +153,47 @@ export default class ContactForm extends React.Component {
 
         return (
             <Form>
-                <h3>Formularz kontaktowy</h3>
+                <h3>{this.props.Title}</h3>
                 <div style={formDiv}>
                     <FormGroup>
-                        <Label for="fullName">Imie i nazwisko:</Label>
+                        <Label for="fullName">{this.props.Fullname}</Label>
                         <Input valid={this.state.fullName.valid} invalid={this.state.fullName.invalid}
-                            onChange={this.handleChange} type="text" id="fullName" />
+                            onChange={this.handleChange} type="text" id="fullName" value={this.state.fullName.value} />
                         <FormFeedback>{this.state.fullName.statemant}</FormFeedback>
                     </FormGroup>
                     <FormGroup>
                         <Label for="email">Email:</Label>
                         <Input valid={this.state.email.valid} invalid={this.state.email.invalid}
-                            onChange={this.handleChange} type="text" id="email" />
+                            onChange={this.handleChange} type="text" id="email" value={this.state.email.value} />
                         <FormFeedback>{this.state.email.statemant}</FormFeedback>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="phone">Telefon:</Label>
+                        <Label for="phone">{this.props.Phone}</Label>
                         <Input valid={this.state.phone.valid} invalid={this.state.phone.invalid}
-                            onChange={this.handleChange} type="text" id="phone" />
+                            onChange={this.handleChange} type="text" id="phone" value={this.state.phone.value} />
                         <FormFeedback>{this.state.phone.statemant}</FormFeedback>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="subject">Temat:</Label>
+                        <Label for="subject">{this.props.Title}</Label>
                         <Input valid={this.state.subject.valid} invalid={this.state.subject.invalid}
-                            onChange={this.handleChange} type="text" id="subject" />
+                            onChange={this.handleChange} type="text" id="subject" value={this.state.subject.value} />
                         <FormFeedback>{this.state.subject.statemant}</FormFeedback>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="content">Treść:</Label>
+                        <Label for="content">{this.props.Contents}</Label>
                         <Input valid={this.state.content.valid} invalid={this.state.content.invalid}
-                            onChange={this.handleChange} type="textarea" id="content" />
+                            onChange={this.handleChange} type="textarea" id="content" value={this.state.content.value} />
                         <FormFeedback>{this.state.content.statemant}</FormFeedback>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
                             <Input onClick={this.checkBox} type="checkbox" />
-                            Check me out
+                            {this.props.Checkbox}
                         </Label>
                     </FormGroup>
                 </div>
                 <div style={btnDiv}>
-                    <Button onClick={this.sendForm} disabled={this.state.disabled}>Submit</Button>
+                    <Button onClick={this.sendForm} disabled={this.state.disabled}>{this.props.SendBtn}</Button>
                 </div>
             </Form>
             );

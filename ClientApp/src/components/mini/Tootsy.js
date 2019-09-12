@@ -9,7 +9,8 @@ export default class Tootsy extends React.Component {
             position: "absolute",
             left: "0px",
             display: "flex",
-            alignItems: "center"
+            alignItems: "center",
+            minHeight: "50px"
         };
 
         var div = {
@@ -20,7 +21,8 @@ export default class Tootsy extends React.Component {
         return (    
             <div style={stopka}>
                 <div style={div}>
-                    <FormText>Wykonał: Łukasz Kosicki</FormText>
+                    <FormText>Autor:</FormText>
+                    <FormText>Łukasz Kosicki</FormText>
                 </div>
                 <div style={div}>
                     <FormText>Kontakt:</FormText>

@@ -1,14 +1,15 @@
 ﻿import React from "react";
 import ProjectCard from "../components/mini/ProjectCard";
 import blue from "../images/resort.jpg";
+import { connect } from "react-redux";
 
-export default class Projects extends React.Component {
+class Projects extends React.Component {
 
     render() {
         return (
             <div id="nasze-projekty" className="section">
                 <div className="contentsDiv">
-                    <h2 className="sectionTitle">Nasze projekty</h2>
+                    <h2 className="sectionTitle">{this.props.Title}</h2>
                     <div>
                         <ProjectCard
                             img={blue}
@@ -36,3 +37,9 @@ export default class Projects extends React.Component {
             );
     }
 }
+
+const mapStateToProps = state => ({
+    ...state.languages[0].OurProjects
+});
+
+export default connect(mapStateToProps)(Projects);

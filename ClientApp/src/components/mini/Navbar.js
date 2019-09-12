@@ -1,11 +1,16 @@
 ﻿import React from "react";
 import HamburgerMenu from "react-hamburger-menu";
-import { Number, Email } from "../../dataPerPage";
 import Menu from "../mini/Menu";
-import AddressEmail from "../mini/AddressEmail";
-import PhoneNumber from "../mini/PhoneNumber";
+import enFlag from "../../images/england.png";
+import plFlag from "../../images/poland.png";
+import deFlag from "../../images/germany.png";
+import { connect } from "react-redux";
+import { setLanguage } from "../../store/actions/languages";
+import pl from "../../languages/pl";
+import en from "../../languages/en";
+import de from "../../languages/de";
 
-export default class Navbar extends React.Component {
+class Navbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -67,13 +72,17 @@ export default class Navbar extends React.Component {
             top: "50%",
             left: "10px"
         };
-        var contact = {
+        var flags = {
             display: "inline-block",
-            top: "0px",
+            top: "50%",
             right: "20px",
-            position: "absolute"
+            position: "absolute",
+            transform: "translateY(-50%)"
         };
-
+        var flagBtn = {
+            border: "0px",
+            backgroundColor: "transparent"
+        };
         
         return (
             <div style={mainDiv}>
@@ -83,19 +92,10 @@ export default class Navbar extends React.Component {
                     menuClicked={this.clickButtonMenu}
                     />
                 </div>
-                <div style={contact}>
-                    <div>
-                        <PhoneNumber
-                            number={Number}
-                            color="white"
-                            />
-                    </div>
-                    <div>
-                        <AddressEmail
-                            email={Email}
-                            color="white"
-                            />
-                    </div>
+                <div style={flags}>
+                    <button onClick={() => this.props.setLanguage(pl)} style={flagBtn} type="button"><img src={plFlag} /></button>
+                    <button onClick={() => this.props.setLanguage(en)} style={flagBtn} type="button"><img src={enFlag} /></button>
+                    <button onClick={() => this.props.setLanguage(de)} style={flagBtn} type="button"><img src={deFlag} /></button>
                 </div>
                 <Menu
                     isOpen={this.state.isOpen}
@@ -104,3 +104,9 @@ export default class Navbar extends React.Component {
             );
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    setLanguage: language => dispatch(setLanguage(language))
+});
+
+export default connect(null, mapDispatchToProps)(Navbar);

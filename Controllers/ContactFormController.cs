@@ -17,6 +17,7 @@ namespace cadmar.Controllers
         public ContactFormController(IConfiguration conf) =>
             configuration = conf;
 
+        [HttpPost]
         public async Task<JsonResult> SendForm([FromBody] ContactForm form)
         {
             string emailAdrressFrom = configuration["EmailFrom:Address"];
@@ -27,8 +28,8 @@ namespace cadmar.Controllers
 
             EmailClient emailClient = new EmailClient(host, emailAdrressFrom, password);
             emailClient.CreateMessage(emailAddressTo, form);
-            emailClient.SendEmail();
-            return Json("");
+            bool res = emailClient.SendEmail();
+            return Json(res);
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿import React from "react";
 import { CompanyName } from "../../dataPerPage";
+import { connect } from "react-redux";
 
-export default class Menu extends React.Component {
+class Menu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -87,12 +88,18 @@ export default class Menu extends React.Component {
             <div className={this.state.class} style={menu}>
                 <h2 style={h2}>{CompanyName}</h2>
                 <div style={options}>
-                    <a style={a} href="#o-firmie">O firmie</a>
-                    <a style={a} href="#nasze-projekty">Nasze projekty</a>
-                    <a style={a} href="#nasi-partnerzy">Nasi partnerzy</a>
-                    <a style={a} href="#kontakt">Kontakt</a>
+                    <a style={a} href="#o-firmie">{this.props.AboutCompany}</a>
+                    <a style={a} href="#nasze-projekty">{this.props.OurProjects}</a>
+                    <a style={a} href="#nasi-partnerzy">{this.props.OurPartners}</a>
+                    <a style={a} href="#kontakt">{this.props.Contact}</a>
                 </div>
             </div>
             );
     }
 }
+
+const mapStateToProps = state => ({
+    ...state.languages[0].Menu
+});
+
+export default connect(mapStateToProps)(Menu);

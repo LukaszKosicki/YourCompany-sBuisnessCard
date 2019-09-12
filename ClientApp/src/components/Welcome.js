@@ -4,8 +4,9 @@ import Logo from "./mini/Logo";
 import { CompanyAsset } from "../dataPerPage";
 import AppearingInscription from "../components/mini/AppearingInscription";
 import PleaseScroll from "../components/mini/PleaseScroll";
+import { connect } from "react-redux";
 
-export default class Welcome extends React.Component {
+class Welcome extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,6 +15,7 @@ export default class Welcome extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props);
         this.setState({
             isReady: true
         });
@@ -25,7 +27,7 @@ export default class Welcome extends React.Component {
                 <div>
                     <Logo />
                     <AppearingInscription
-                        text={CompanyAsset}
+                        text={this.props.CompanyAsset}
                     />
                 </div>
                 );
@@ -45,8 +47,16 @@ export default class Welcome extends React.Component {
         return (
             <div style={tlo}>
                 {this.showAnimations()}
-                <PleaseScroll />
+                <PleaseScroll
+                    text={this.props.SeeMore}
+                />
             </div>
             );
     }
 }
+
+const mapStateToProps = state => ({
+    ...state.languages[0].Welcome
+});
+
+export default connect(mapStateToProps)(Welcome);

@@ -3,8 +3,9 @@ import $ from "jquery";
 import Counter from "../components/mini/Counter";
 import skanska from "../images/skanska.jpg";
 import "./partners.css";
+import { connect } from "react-redux";
 
-export default class Partners extends React.Component {
+class Partners extends React.Component {
     /*
     constructor(props) {
         super(props);
@@ -32,7 +33,7 @@ export default class Partners extends React.Component {
         return (
             <div id="nasi-partnerzy" className="section">
                 <div className="contentsDiv">
-                    <h2 className="sectionTitle">Nasi partnerzy</h2>
+                    <h2 className="sectionTitle">{this.props.Title}</h2>
                     <div>
                         <img class="partnerLogo" src={skanska} />
                         <img class="partnerLogo" src={skanska} />
@@ -45,3 +46,9 @@ export default class Partners extends React.Component {
             );
     }
 } 
+
+const mapStateToProps = state => ({
+    ...state.languages[0].OurPartners
+});
+
+export default connect(mapStateToProps)(Partners);

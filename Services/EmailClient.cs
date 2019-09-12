@@ -32,14 +32,24 @@ namespace cadmar.Services
                 form.Email + Environment.NewLine + form.PhoneNumber;
         }
 
-        public void SendEmail()
+        public bool SendEmail()
         {
-            client.SendCompleted += new 
-                SendCompletedEventHandler(SendCompletedCallback);
+            client.EnableSsl = true;
+     /*       client.SendCompleted += new 
+                SendCompletedEventHandler(SendCompletedCallback); */
             string userState = "contactForm";
-            client.SendAsync(message, userState);
+            try
+            {
+                client.SendMailAsync(message);
+                return true;
+            }
+            catch
+            {
+             
+                return false;
+            }
         }
-
+        /*
         private void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
         {
             string token = (string)e.UserState;
@@ -48,6 +58,6 @@ namespace cadmar.Services
             {
                 mailSend = true;
             } 
-        }
+        }*/
     }
 }
