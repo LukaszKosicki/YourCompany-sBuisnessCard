@@ -153,7 +153,8 @@ export default class ContactForm extends React.Component {
 
         return (
             <Form>
-                <h3>{this.props.Title}</h3>
+                <h3>{this.props.Form}</h3>
+                <hr />
                 <div style={formDiv}>
                     <FormGroup>
                         <Label for="fullName">{this.props.Fullname}</Label>

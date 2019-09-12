@@ -30,6 +30,7 @@ class AboutCompany extends React.Component {
             <div id="o-firmie" className="section">
                 <div className="contentsDiv">
                     <h2 className="sectionTitle">{this.props.Title}</h2>
+                    <hr/>
                     <div style={description}>
                         <div style={descriptionDiv}>
                             {CompanyDescription}

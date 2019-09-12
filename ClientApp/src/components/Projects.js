@@ -10,6 +10,7 @@ class Projects extends React.Component {
             <div id="nasze-projekty" className="section">
                 <div className="contentsDiv">
                     <h2 className="sectionTitle">{this.props.Title}</h2>
+                    <hr />
                     <div>
                         <ProjectCard
                             img={blue}

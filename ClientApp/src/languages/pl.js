@@ -28,7 +28,7 @@ const pl = {
     "Contact": {
         "Title": "Kontakt",
         "ContactForm": {
-            "Title": "Formularz kontaktowy",
+            "Form": "Formularz kontaktowy",
             "Fullname": "Imie i nazwisko:",
             "Phone": "Telefon:",
             "Title": "Tytuł:",

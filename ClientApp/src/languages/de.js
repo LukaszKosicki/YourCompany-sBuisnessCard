@@ -28,7 +28,7 @@ const de = {
     "Contact": {
         "Title": "Kontakt",
         "ContactForm": {
-            "Title": "Kontaktformular",
+            "Form": "Kontaktformular",
             "Fullname": "vollständiger Name:",
             "Phone": "Telefon:",
             "Title": "Titel:",

@@ -34,6 +34,7 @@ class Partners extends React.Component {
             <div id="nasi-partnerzy" className="section">
                 <div className="contentsDiv">
                     <h2 className="sectionTitle">{this.props.Title}</h2>
+                    <hr />
                     <div>
                         <img class="partnerLogo" src={skanska} />
                         <img class="partnerLogo" src={skanska} />

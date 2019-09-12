@@ -16,6 +16,7 @@ class Contact extends React.Component {
                 <div id="kontakt" className="section">
                     <div className="contentsDiv">   
                         <h2 className="sectionTitle">{this.props.Title}</h2>
+                        <hr />
                     <div className="leftDiv">
                         <div className="contentLeftDiv"> 
                             <div>

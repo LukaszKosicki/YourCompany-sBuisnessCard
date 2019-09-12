@@ -28,7 +28,7 @@ const en = {
     "Contact": {
         "Title": "Contact",
         "ContactForm": {
-            "Title": "Contact form",
+            "Form": "Contact form",
             "Fullname": "Fullname:",
             "Phone": "Phone:",
             "Title": "Title:",
